@@ -59,13 +59,13 @@
         <div style="padding-right: 16px; max-height:480px; overflow-x: hidden;overflow-y: auto;">
           <a-form ref="myform" :label-col="{ style: { width: '80px' } }" :model="modal.form" :rules="modal.rules">
             <a-row :gutter="24">
-              <a-col span="24">
-                <a-form-item label="视频名称" name="title">
-                  <a-input placeholder="请输入" v-model:value="modal.form.title"></a-input>
+              <a-col span="12">
+                <a-form-item label="姓名" name="name">
+                  <a-input placeholder="请输入" v-model:value="modal.form.name"></a-input>
                 </a-form-item>
               </a-col>
               <a-col span="12">
-                <a-form-item label="分类" name="classification">
+                <a-form-item label="班级" name="classification">
                   <a-select placeholder="请选择"
                             allowClear
                             :options="modal.cData"
@@ -75,16 +75,37 @@
                 </a-form-item>
               </a-col>
               <a-col span="12">
-                <a-form-item label="标签">
-                  <a-select mode="multiple" placeholder="请选择" allowClear v-model:value="modal.form.tag">
-                    <template v-for="item in modal.tagData">
-                      <a-select-option :value="item.id">{{item.title}}</a-select-option>
-                    </template>
-                  </a-select>
+                <a-form-item label="学号" name="xuehao">
+                  <a-input placeholder="请输入" v-model:value="modal.form.xuehao"></a-input>
                 </a-form-item>
               </a-col>
-              <a-col span="24">
-                <a-form-item label="封面">
+              <a-col span="12">
+                <a-form-item label="身份证号" name="sfz">
+                  <a-input placeholder="请输入" v-model:value="modal.form.sfz"></a-input>
+                </a-form-item>
+              </a-col>
+              <a-col span="12">
+                <a-form-item label="性别" name="sex">
+                  <a-input placeholder="请输入" v-model:value="modal.form.sex"></a-input>
+                </a-form-item>
+              </a-col>
+              <a-col span="12">
+                <a-form-item label="出生日期" name="birthday">
+                  <a-input placeholder="请输入" v-model:value="modal.form.birthday"></a-input>
+                </a-form-item>
+              </a-col>
+              <a-col span="12">
+                <a-form-item label="民族" name="minzu">
+                  <a-input placeholder="请输入" v-model:value="modal.form.minzu"></a-input>
+                </a-form-item>
+              </a-col>
+              <a-col span="12">
+                <a-form-item label="备注" name="remark">
+                  <a-input placeholder="请输入" v-model:value="modal.form.remark"></a-input>
+                </a-form-item>
+              </a-col>
+              <!-- <a-col span="24">
+                <a-form-item label="头像">
                   <a-upload-dragger
                       name="file"
                       accept="image/*"
@@ -101,39 +122,16 @@
                       </template>
                     </p>
                     <p class="ant-upload-text">
-                      请选择要上传的封面图片
+                      请选择要上传的头像
                     </p>
                   </a-upload-dragger>
                 </a-form-item>
-              </a-col>
-              <a-col span="24">
-                <a-form-item label="视频文件">
-                  <a-upload-dragger
-                      name="file"
-                      accept=".mp4"
-                      :multiple="false"
-                      :before-upload="beforeUpload1"
-                      v-model:file-list="fileList1"
-                  >
-                    <p class="ant-upload-drag-icon">
-                      <video-camera-outlined />
-                    </p>
-                    <p class="ant-upload-text">
-                      请选择要上传的文件（mp4格式）
-                    </p>
-                  </a-upload-dragger>
-                </a-form-item>
-              </a-col>
-              <a-col span="24">
-                <a-form-item label="内容简介">
-                  <a-textarea placeholder="请输入" v-model:value="modal.form.description"></a-textarea>
-                </a-form-item>
-              </a-col>
+              </a-col> -->
               <a-col span="12">
                 <a-form-item label="状态" name="status">
                   <a-select placeholder="请选择" allowClear v-model:value="modal.form.status">
-                    <a-select-option key="0" value="0">上架</a-select-option>
-                    <a-select-option key="1" value="1">下架</a-select-option>
+                    <a-select-option key="0" value="0">在读</a-select-option>
+                    <a-select-option key="1" value="1">毕业</a-select-option>
                   </a-select>
                 </a-form-item>
               </a-col>
@@ -162,22 +160,50 @@ const columns = reactive([
     width: 60
   },
   {
-    title: '名称',
-    dataIndex: 'title',
-    key: 'title'
+    title: '学号',
+    dataIndex: 'xuehao',
+    key: 'xuehao'
+  },
+  {
+    title: '姓名',
+    dataIndex: 'name',
+    key: 'name'
+  },
+  {
+    title: '性别',
+    dataIndex: 'sex',
+    key: 'sex'
+  },
+  {
+    title: '出生日期',
+    dataIndex: 'birthday',
+    key: 'birthday'
+  },
+  {
+    title: '身份证号',
+    dataIndex: 'sfz',
+    key: 'sfz'
+  },
+  {
+    title: '民族',
+    dataIndex: 'minzu',
+    key: 'minzu'
+  },
+  {
+    title: '班级',
+    dataIndex: 'classification_title',
+    key: 'classification_title'
   },
   {
     title: '状态',
     dataIndex: 'status',
     key: 'status',
-    customRender: ({ text, record, index, column }) => text === '0' ? '上架' : '下架'
+    customRender: ({ text, record, index, column }) => text === '0' ? '在读' : '毕业'
   },
   {
-    title: '简介',
-    dataIndex: 'description',
-    key: 'description',
-    customRender: ({ text, record, index, column }) => text ? text.substring(0, 40) + '...' : '--',
-    width: 600,
+    title: '备注',
+    dataIndex: 'remark',
+    key: 'remark'
   },
   {
     title: '操作',
@@ -198,18 +224,8 @@ const beforeUpload = (file: File) => {
   return false;
 };
 
-const beforeUpload1 = (file: File) => {
-  // 改视频文件名
-  const fileName = new Date().getTime().toString() + '.' + file.type.substring(6);
-  const copyFile = new File([file], fileName);
-  console.log(copyFile);
-  modal.form.rawFile = copyFile;
-  return false;
-};
-
 // 文件列表
 const fileList = ref<any[]>([]);
-const fileList1 = ref<any[]>([]);
 
 const submitting = ref<boolean>(false);
 
@@ -232,22 +248,26 @@ const modal = reactive({
   tagData: [{}],
   form: {
     id: undefined,
-    title: undefined,
+    name: undefined,
     classification: undefined,
+    xuehao: undefined,
+    sfz: undefined,
+    minzu: undefined,
     tag: [],
-    repertory: undefined,
-    price: undefined,
+    sex: undefined,
+    birthday: undefined,
+    remark: undefined,
     status: undefined,
     cover: undefined,
     coverUrl: undefined,
-    imageFile: undefined,
-    rawFile: undefined
+    imageFile: undefined
   },
   rules: {
-    title: [{ required: true, message: '请输入名称', trigger: 'change' }],
-    classification: [{ required: true, message: '请选择分类', trigger: 'change' }],
-    repertory: [{ required: true, message: '请输入库存', trigger: 'change' }],
-    price: [{ required: true, message: '请输入定价', trigger: 'change' }],
+    xuehao: [{ required: true, message: '请输入学号', trigger: 'change' }],
+    sfz: [{ required: true, message: '请输入身份证', trigger: 'change' }],
+    name: [{ required: true, message: '请输入姓名', trigger: 'change' }],
+    classification: [{ required: true, message: '请选择班级', trigger: 'change' }],
+    sex: [{ required: true, message: '请输入性别', trigger: 'change' }],
     status: [{ required: true, message: '请选择状态', trigger: 'change' }]
   },
 });
@@ -377,27 +397,18 @@ const handleOk = () => {
         if(modal.editFlag) {
           formData.append('id', modal.form.id)
         }
-        formData.append('title', modal.form.title)
+        formData.append('xuehao', modal.form.xuehao || '')
+        formData.append('name', modal.form.name || '')
+        formData.append('sex', modal.form.sex || '')
+        formData.append('birthday', modal.form.birthday || '')
+        formData.append('minzu', modal.form.minzu || '')
+        formData.append('sfz', modal.form.sfz || '')
+        formData.append('remark', modal.form.remark || '')
         if (modal.form.classification) {
           formData.append('classification', modal.form.classification)
         }
-        if (modal.form.tag) {
-          modal.form.tag.forEach(function (value) {
-            if(value){
-              formData.append('tag', value)
-            }
-          })
-        }
         if (modal.form.imageFile) {
           formData.append('cover', modal.form.imageFile)
-        }
-        if(modal.form.rawFile) {
-          formData.append('raw', modal.form.rawFile)
-        }
-        formData.append('description', modal.form.description || '')
-        formData.append('price', modal.form.price || '')
-        if (modal.form.repertory >= 0) {
-          formData.append('repertory', modal.form.repertory)
         }
         if (modal.form.status) {
           formData.append('status', modal.form.status)
@@ -445,7 +456,6 @@ const handleCancel = () => {
 const resetModal = () => {
   myform.value?.resetFields();
   fileList.value = []
-  fileList1.value = []
 };
 
 // 关闭弹窗

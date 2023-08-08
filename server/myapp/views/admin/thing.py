@@ -16,7 +16,7 @@ def list_api(request):
         c = request.GET.get("c", None)
         tag = request.GET.get("tag", None)
         if keyword:
-            things = Thing.objects.filter(title__contains=keyword).order_by('-create_time')
+            things = Thing.objects.filter(name__contains=keyword).order_by('-create_time')
         elif c:
             classification = Classification.objects.get(pk=c)
             things = classification.classification_thing.all()

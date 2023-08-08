@@ -31,7 +31,7 @@ class UpdateThingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Thing
         # 排除多对多字段
-        exclude = ('wish', 'collect',)
+        exclude = ()
 
 
 class ListThingSerializer(serializers.ModelSerializer):

@@ -15,25 +15,25 @@
 
           <a-menu-item key="thing">
             <database-outlined/>
-            <span>视频管理</span>
+            <span>学生管理</span>
           </a-menu-item>
           <a-menu-item key="classification">
             <layout-outlined/>
-            <span>分类管理</span>
+            <span>班级管理</span>
           </a-menu-item>
-          <a-menu-item key="tag">
+          <!-- <a-menu-item key="tag">
             <tag-outlined/>
             <span>标签管理</span>
-          </a-menu-item>
-          <a-menu-item key="comment">
+          </a-menu-item> -->
+          <!-- <a-menu-item key="comment">
             <comment-outlined/>
             <span>评论管理</span>
-          </a-menu-item>
+          </a-menu-item> -->
           <a-menu-item key="user">
             <user-outlined/>
             <span>用户管理</span>
           </a-menu-item>
-          <a-sub-menu>
+          <!-- <a-sub-menu>
             <template #icon>
               <folder-outlined/>
             </template>
@@ -46,7 +46,7 @@
               <appstore-outlined/>
               <span>通知公告</span>
             </a-menu-item>
-          </a-sub-menu>
+          </a-sub-menu> -->
           <a-sub-menu>
             <template #icon>
               <folder-outlined/>
@@ -65,10 +65,10 @@
               <span>错误日志</span>
             </a-menu-item>
           </a-sub-menu>
-          <a-menu-item key="overview">
+          <!-- <a-menu-item key="overview">
             <home-outlined/>
             <span>统计分析</span>
-          </a-menu-item>
+          </a-menu-item> -->
           <a-menu-item key="sysInfo">
             <info-circle-outlined/>
             <span>系统信息</span>

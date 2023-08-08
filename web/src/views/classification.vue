@@ -54,7 +54,7 @@
           <a-form ref="myform" :label-col="{ style: { width: '80px' } }" :model="modal.form" :rules="modal.rules">
             <a-row :gutter="24">
               <a-col span="24">
-                <a-form-item label="分类名称" name="title">
+                <a-form-item label="班级名称" name="title">
                   <a-input placeholder="请输入" v-model:value="modal.form.title"></a-input>
                 </a-form-item>
               </a-col>
@@ -73,7 +73,7 @@ import { createApi, listApi, updateApi, deleteApi } from '/@/api/classification'
 
 const columns = reactive([
   {
-    title: '分类名称',
+    title: '班级名称',
     dataIndex: 'title',
     key: 'title',
   },

@@ -67,21 +67,20 @@ class Thing(models.Model):
     classification = models.ForeignKey(Classification, on_delete=models.CASCADE, blank=True, null=True,
                                        related_name='classification_thing')
     tag = models.ManyToManyField(Tag, blank=True)
-    title = models.CharField(max_length=100, blank=True, null=True)
+    xuehao = models.CharField(max_length=20, blank=True, null=True)
+    name = models.CharField(max_length=20, blank=True, null=True)
+    sex = models.CharField(max_length=20, blank=True, null=True)
+    birthday = models.CharField(max_length=20, blank=True, null=True)
+    jiguan = models.CharField(max_length=20, blank=True, null=True)
+    sfz = models.CharField(max_length=20, blank=True, null=True)
+    minzu = models.CharField(max_length=20, blank=True, null=True)
+    remark = models.CharField(max_length=30, blank=True, null=True)
     cover = models.ImageField(upload_to='cover/', null=True)
-    raw = models.FileField(upload_to='raw/', null=True)
-    description = models.TextField(max_length=1000, blank=True, null=True)
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='0')
     create_time = models.DateTimeField(auto_now_add=True, null=True)
-    pv = models.IntegerField(default=0)
-    recommend_count = models.IntegerField(default=0)
-    wish = models.ManyToManyField(User, blank=True, related_name="wish_things")
-    wish_count = models.IntegerField(default=0)
-    collect = models.ManyToManyField(User, blank=True, related_name="collect_things")
-    collect_count = models.IntegerField(default=0)
 
     class Meta:
-            db_table = "b_thing"
+        db_table = "b_thing"
 
 
 class Comment(models.Model):
@@ -143,8 +142,6 @@ class ErrorLog(models.Model):
 
     class Meta:
         db_table = "b_error_log"
-
-
 
 
 class Banner(models.Model):
