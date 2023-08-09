@@ -6,12 +6,12 @@
 2. 打开cmd命令行，进入mysql，并新建数据库
 ```
 mysql -u root -p
-CREATE DATABASE IF NOT EXISTS python_video DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS python_student DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
 ```
 3. 恢复sql数据
 ```
-use python_video
-source xxxx.sql
+use python_student
+source python_student.sql
 ```
 4. 修改settings.py中的配置信息
 5. 复制资源，将upload文件夹复制到server目录下
@@ -22,7 +22,7 @@ pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple
 ```
 运行项目
 ```
-python manage.py runserver 0.0.0.0:9005
+python manage.py runserver
 ```
 7. 后期维护改动
 
